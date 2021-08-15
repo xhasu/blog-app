@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Avatar from 'components/ui/avatar'
 import { ModalUserContext, ModalCommentsContext, UserContext, CommentsContext } from 'app/contexts/contexts'
+import { HeartIcon } from 'components/shared/svgs';
 
 const Card = ({ post }) => {
 
@@ -36,27 +37,30 @@ const Card = ({ post }) => {
 
       <CardHead data={owner} />
 
+      <div className="card-media">
+        <img src={image} alt="" />
+      </div>
+
       <div className="card-body">
-        <div className="card-media">
-          <img src={image} alt="" width="180" height="auto" />
-        </div>
         <div className="card-actions">
-          Likes: {likes} <br />
-          <span>Liked by X</span> <strong>and X others</strong>
+          <HeartIcon /> <span>{likes}</span> <br />
+          Liked by X <strong>and X others</strong>
         </div>
         <div className="card-text">
           <p>{text}</p>
         </div>
         <div className="card-tags">
-          {tags.map((tag, i) => <span key={i}>{tag}</span>)}
+          {tags.map((tag, i) => <span key={i}>#{tag} </span>)}
         </div>
       </div>
 
-      <div className="card-footer">
-        <span>Published on {getDateFormated(publishDate)}</span>
+      <div className="card-date">
+        <span>{getDateFormated(publishDate)}</span>
       </div>
 
-      <span className="link" onClick={handleShowComments}>Show comments</span>
+      <div className="card-footer">
+        <span className="link" onClick={handleShowComments}>Show comments</span>
+      </div>
 
     </div>
   )
@@ -89,7 +93,10 @@ export const CardHead = ({data}) => {
   return (
     <div data-id={id} className="card-head" onClick={handleClick}>
       <Avatar src={picture} />
-      <span>{getName()}</span>
+      <span>
+        {getName()} <br />
+        <small>View profile</small>
+      </span>
     </div>
   )
 }

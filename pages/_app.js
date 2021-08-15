@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import BaseLayout from 'components/layouts/base';
 
+import 'styles/main.scss'
+
 function MyApp({ Component, pageProps }) {
   return (
     <BaseLayout>

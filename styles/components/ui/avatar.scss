@@ -1,0 +1,17 @@
+
+.avatar {
+
+  position: relative;
+  margin: 0 10px;
+  box-sizing: border-box;
+
+  &-media {
+    position: relative;
+    border-radius: 100%;
+    overflow: hidden;
+    max-width: 45px;
+    img {
+      @include img-cover();
+    }
+  }
+}

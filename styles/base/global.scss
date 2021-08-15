@@ -11,7 +11,7 @@ html {
 body {
   font-size: 16px;
   line-height: 24px;
-  background-color: whitesmoke;
+  background-color: $grey-100;
   min-height: 100vh;
   min-width: 320px;
   // @include basehold();
@@ -96,4 +96,21 @@ small {
 ::selection {
   background-color: #c6c7c8;
   color: black;
+}
+
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1920px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.section {
+  position: relative;
+  margin: 0 auto;
+  max-width: $desktop + 20px;
+  padding: 0 10px;
+  box-sizing: border-box;
 }

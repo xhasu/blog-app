@@ -24,9 +24,11 @@ const Posts = ({ posts }) => {
             <Comments />
           </ModalComments>
           
-          {data.map((post, index) => {
-            return <Card key={index} post={post} setComments={setComments} />
-          })}
+          <section className="section posts-content">
+            {data.map((post, index) => {
+              return <Card key={index} post={post} setComments={setComments} />
+            })}
+          </section>
 
         </ModalCommentsProvider>
       </ModalUserProvider>
