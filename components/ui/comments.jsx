@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import useSWR from 'swr'
 import { CommentsContext } from 'app/contexts/contexts'
 import { fetcher } from 'app/services/dummyapi';
+import Avatar from './avatar';
 
 const Comment = (props) => {
 
@@ -19,11 +20,22 @@ const Comment = (props) => {
     publishDate = '',
   } = props;
 
+  const getDateFormated = (timestamp) => {
+    const options = {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    }
+    return new Date(timestamp).toLocaleDateString('en-US', options);
+  }
+
   return (
     <div comment-id={id} className="comment">
       <div className="comment-head">
-        <div className="comment-owner">
+        <Avatar src={picture} />
+        <div className="owner-info">
           <div className="owner-name">{firstName} {lastName}</div>
+          <div className="owner-date">{getDateFormated(publishDate)}</div>
         </div>
       </div>
       <div className="comment-content">
@@ -45,14 +57,20 @@ const Comments = () => {
   }
 
   if (!data) {
-    return <div>Loading...</div>
+    return (
+      <div className="comments">
+        <div className="comments-title">Loading...</div>
+      </div>
+    )
   }
 
   return (
-    <div>
+    <div className="comments">
+      <div className="comments-title">Comments</div>
       {data.data.map(comment => (
         <Comment key={comment.id} {...comment} />
       ))}
+      {data.data.length == 0 && <div className="comments-empty">No comments yet</div>}
     </div>
   )
 }

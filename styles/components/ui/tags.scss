@@ -1,0 +1,40 @@
+
+.tags {
+
+  position: relative;
+  padding-top: 10px;
+  @include center($tablet);
+
+  &-title {
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 1;
+    color: black;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  ul {
+    position: relative;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+  }
+  li {
+    display: block;
+  }
+  span {
+    display: block;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1.2;
+    padding: 2px 6px;
+    color: $cyan-800;
+    font-style: italic;
+    border-radius: 4px;
+    background-color: $teal-50;
+  }
+}

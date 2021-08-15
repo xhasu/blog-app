@@ -1,0 +1,79 @@
+.comments {
+ position: relative; 
+ width: 100%;
+ min-width: 320px;
+ max-width: 800px;
+ margin: 0 auto;
+ background-color: white;
+ border-radius: 8px;
+ padding: 30px 20px 10px;
+ min-height: 240px;
+ box-sizing: border-box;
+
+ @include below($phone) {
+   min-width: 280px;
+ }
+
+ &-title {
+   font-size: 18px;
+   line-height: 1;
+   color: black;
+   font-weight: 700;
+   margin-bottom: 12px;
+ }
+}
+
+.comment {
+
+  position: relative;
+  margin-bottom: 20px;
+  
+  &-head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 8px 4px;
+    margin-bottom: 8px;
+  }
+  
+  &-content {
+    border-bottom: 1px solid $grey-300;
+  }
+
+  &:last-child {
+    .comment-content {
+      border: none;
+    }
+  }
+
+  &-text {
+    position: relative;
+    p {
+      margin-top: 0;
+      font-size: 14px;
+      font-weight: 300;
+      color: $grey-800;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+  }
+}
+
+.owner {
+  &-info {
+    position: relative;
+    
+  }
+  &-name {
+    font-size: 14px;
+    line-height: 1;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: black;
+  }
+  &-date {
+    font-size: 12px;
+    line-height: 1;
+    opacity: .6;
+  }
+}

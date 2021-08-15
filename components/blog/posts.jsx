@@ -7,8 +7,6 @@ import Comments from 'components/ui/comments'
 
 const Posts = ({ posts }) => {
 
-  const { data } = posts;
-
   const [comments, setComments] = useState(false);
 
   return (
@@ -25,10 +23,16 @@ const Posts = ({ posts }) => {
           </ModalComments>
           
           <section className="section posts-content">
-            {data.map((post, index) => {
+            {posts.map((post, index) => {
               return <Card key={index} post={post} setComments={setComments} />
             })}
           </section>
+          {posts.length === 0 && (
+            <div className="posts-empty">
+              <h2>Ups! No posts found</h2>
+              <h4>Try again later</h4>
+            </div>
+          )}
 
         </ModalCommentsProvider>
       </ModalUserProvider>

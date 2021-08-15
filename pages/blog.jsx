@@ -1,20 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from 'components/shared/header'
 import Tags from 'components/shared/tags'
 import Posts from 'components/blog/posts'
 
-import { getPosts } from 'app/services/dummyapi'
+import { getPosts, getTags } from 'app/services/dummyapi'
 import { UserProvider, CommentsProvider } from 'app/contexts/contexts'
 
-const BlogPage = ({data}) => {
+const BlogPage = ({ posts, tags }) => {
+
+  const [filter, setFilter] = useState(false);
+
+  // filter posts by tag
+  const filterPosts = (posts, filter) => {
+    if (filter) {
+      return posts.filter(post => post.tags.indexOf(filter) > -1)
+    }
+    return posts
+  };
+
+  // get unique tags from posts
+  const getUniqueTags = (posts) => {
+    return posts.reduce((acc, post) => {
+      return acc.concat(post.tags)
+    }, [])
+    .filter((tag, index, arr) => arr.indexOf(tag) === index)
+  };
+
+  const uniqueTags = getUniqueTags(posts.data);
+  const resultPosts = filterPosts(posts.data, filter);
 
   return (
     <div>
       <Header />
-      <Tags />
+      <Tags tags={uniqueTags} trending={true} setFilter={setFilter} />
       <UserProvider>
         <CommentsProvider>
-          <Posts posts={data} />
+          <Posts posts={resultPosts} />
         </CommentsProvider>
       </UserProvider>
     </div>
@@ -26,12 +47,14 @@ export default BlogPage
 
 export const getServerSideProps = async (context) => {
 
-  const response = await getPosts();
+  const posts = await getPosts();
+  const tags = await getTags();
 
   return {
     props: {
       title: 'Blog',
-      data: response.data,
+      posts: posts.data,
+      tags: tags.data
     }
   }
 }

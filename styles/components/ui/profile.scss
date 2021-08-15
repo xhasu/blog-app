@@ -1,0 +1,55 @@
+
+.profile {
+  position: relative;
+  width: 320px;
+  margin: 0 auto;
+  padding: 40px 10px;
+  border-radius: 8px;
+  background-color: white;
+  box-sizing: border-box;
+
+  @include below($phone) {
+    width: 280px;
+  }
+
+  &-avatar {
+    position: relative;
+    text-align: center;
+  }
+
+  &-name {
+    position: relative;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: bold;
+    margin-bottom: 0;
+    box-sizing: border-box;
+  }
+
+  &-detail {
+    text-align: center;
+  }
+
+  &-email {
+    font-size: 14px;
+    color: $grey-600;
+  }
+  &-phone {
+    font-size: 14px;
+    color: black;
+    margin-bottom: 16px;
+  }
+
+  address {
+    color: $grey-800;
+  }
+
+  hr {
+    border-top: 1px solid $grey-300;
+    height: 0;
+    background: transparent;
+    border-radius: 0;
+    margin-bottom: 16px;
+  }
+}

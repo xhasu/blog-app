@@ -9,9 +9,37 @@
     position: relative;
     border-radius: 100%;
     overflow: hidden;
+    aspect-ratio: 1/1;
     max-width: 45px;
+    background-color: $grey-50;
     img {
       @include img-cover();
+    }
+  }
+
+  &-profile {
+
+    max-width: 80px;
+    margin: 20px auto;
+    
+    .avatar-media {
+      max-width: 80px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      clear: both;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110%;
+      height: 110%;
+      border-radius: 100%;
+      border: 1px solid black;
+      @include no-events();
     }
   }
 }
