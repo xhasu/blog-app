@@ -9,7 +9,7 @@ class MyDocument extends Document {
 
   constructor (props) {
     super(props);
-    this.GTMID = 'P8DNP66';
+    this.GTMID = 'GTM-P8DNP66';
   }
 
   render() {
