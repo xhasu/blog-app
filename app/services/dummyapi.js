@@ -16,20 +16,20 @@ const config = {
 
 export const getUsers = () => {
   
-  // return axios.get(`${API_URL}/user`, config);
-  return Promise.resolve({data: MockUsers});
+  return axios.get(`${API_URL}/user`, config);
+  // return Promise.resolve({data: MockUsers});
 }
 
 export const getPosts = () => {
   
-  // return axios.get(`${API_URL}/post`, config);
-  return Promise.resolve({data: MockPosts});
+  return axios.get(`${API_URL}/post`, config);
+  // return Promise.resolve({data: MockPosts});
 }
 
 export const getTags = () => {
   
-  // return axios.get(`${API_URL}/post`, config);
-  return Promise.resolve({data: MockTags});
+  return axios.get(`${API_URL}/post`, config);
+  // return Promise.resolve({data: MockTags});
 }
 
 export const fetcher = url => axios.get(`${API_URL}${url}`, config)

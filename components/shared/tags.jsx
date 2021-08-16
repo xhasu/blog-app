@@ -4,13 +4,24 @@ import { shuffle } from 'lodash'
 const Tags = ({tags, trending = false, setFilter}) => {
 
   const tagList = trending ? shuffle(tags).slice(0,10) : tags;
+
+  const handleTagClick = (tag) => {
+    if( tag == 'all' ) {
+      setFilter(null);
+    }else {
+      setFilter(tag);
+    }
+  }
   
   return (
     <nav className="tags">
       {trending && <div className="tags-title">Trending</div>}
       <ul>
-        {tagList.sort().map(tag => (
-          <li key={tag} onClick={() => {setFilter(tag)}}>
+        <li onClick={() => {handleTagClick('all')}}>
+          <span>#all</span>
+        </li>
+        {tagList.sort().map((tag, index) => (
+          <li key={index} onClick={() => {handleTagClick(tag)}}>
             <span>#{tag}</span>
           </li>
         ))}

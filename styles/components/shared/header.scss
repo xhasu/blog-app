@@ -1,0 +1,45 @@
+
+.header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  border-bottom: 1px solid $grey-300;
+  padding: 10px 15px;
+  z-index: 50;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &-profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &-name {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 1;
+      margin-bottom: 4px;
+      color: black;
+    }
+    &-email {
+      font-size: 14px;
+      line-height: 1;
+      color: $grey-300;
+      font-style: italic;
+    }
+    &-avatar {
+      position: relative;
+      width: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 10px;
+      img {
+        @include img-fluid();
+      }
+    }
+
+  }
+}

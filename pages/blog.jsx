@@ -6,7 +6,11 @@ import Posts from 'components/blog/posts'
 import { getPosts, getTags } from 'app/services/dummyapi'
 import { UserProvider, CommentsProvider } from 'app/contexts/contexts'
 
-const BlogPage = ({ posts, tags }) => {
+import { useSession, getSession } from 'next-auth/client'
+
+const BlogPage = (props) => {
+
+  const { posts, tags } = props;
 
   const [filter, setFilter] = useState(false);
 
